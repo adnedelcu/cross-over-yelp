@@ -6,6 +6,7 @@ import { getUser } from '../utils/users.js';
 import { Layout } from './Layout.jsx';
 import { RestaurantCard } from './RestaurantCard.jsx';
 import { ReviewList } from './ReviewList.jsx';
+import { randomCoordinates } from '../../config.js';
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
@@ -42,6 +43,9 @@ export const Restaurant = () => {
                 setCoordinates(data.results[0]?.geometry)
                 console.log(coordinates)
                 console.log(data.results[0]?.geometry)
+              })
+              .catch(err => {
+                setCoordinates(randomCoordinates[Math.round(Math.random() * (randomCoordinates.length - 1))]);
               })
             setRestaurant(restaurant);
           })
