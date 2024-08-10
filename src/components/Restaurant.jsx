@@ -36,17 +36,7 @@ export const Restaurant = () => {
                   return prev;
                 }));
             }
-            fetch(`https://api.opencagedata.com/geocode/v1/json?q=${restaurant.location.address},${restaurant.location.zip_code}+${restaurant.location.city},${restaurant.location.state}&key=03c48dae07364cabb7f121d8c1519492&no_annotations=1&language=en`)
-              .then(response => response.json())
-              .then(data => {
-                console.log(data)
-                setCoordinates(data.results[0]?.geometry)
-                console.log(coordinates)
-                console.log(data.results[0]?.geometry)
-              })
-              .catch(err => {
-                setCoordinates(randomCoordinates[Math.round(Math.random() * (randomCoordinates.length - 1))]);
-              })
+            setCoordinates(randomCoordinates[Math.round(Math.random() * (randomCoordinates.length - 1))]);
             setRestaurant(restaurant);
           })
       } catch (e) {
