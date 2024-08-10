@@ -50,7 +50,7 @@ export const Homepage = () => {
       <div className="flex flex-col items-start justify-center min-h-screen">
         <div className="flex flex-row items-center justify-start w-full max-w-5xl mt-5 ml-20">
           {/* GIF on the left */}
-          <img src={logoGif} alt="Logo" className="h-[17.5rem] w-[17.5rem] mr-16 rounded-lg object-cover" />
+          <img src={logoGif} alt="Logo" className=" w-[26rem] mr-16 rounded-lg object-cover" />
 
           <div className="flex flex-col items-center w-full max-w-2xl">
             <div className="flex justify-between items-center my-5 p-4 bg-gray-800 rounded-lg w-full">
