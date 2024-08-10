@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
-import { Navbar } from './Navbar.jsx'
+import { Link, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { MapContainer, TileLayer, useMap } from 'react-leaflet';
 import { getRestaurant } from '../utils/restaurants.js';
 import { getUser } from '../utils/users.js';
+import { Layout } from './Layout.jsx';
 
 export const Restaurant = () => {
   let { id } = useParams();
@@ -38,8 +39,7 @@ export const Restaurant = () => {
   }, []);
 
   return (
-    <>
-      <Navbar></Navbar>
+    <Layout>
       Restaurant {restaurant.name} #{id}
       {restaurant && restaurant.reviews?.map(review => (
         <div key={review.id} className="bg-gray-700 rounded-lg p-3 my-3">
@@ -60,6 +60,6 @@ export const Restaurant = () => {
         </div>
       ))}
       <Link to="/restaurants" className="btn btn-info">Go back to list</Link>
-    </>
+    </Layout>
   )
 }

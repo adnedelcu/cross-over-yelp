@@ -1,7 +1,7 @@
-import { Navbar } from './Navbar.jsx'
 import { useState, useEffect } from 'react';
 import mockData from '../assets/mockupData.json';
 import logoGif from '../assets/logo.gif'; // Import the GIF
+import { Layout } from './Layout.jsx';
 
 
 export const Homepage = () => {
@@ -22,19 +22,19 @@ export const Homepage = () => {
 
     if (searchTerm || selectedCity || selectedTag) {
       if (searchTerm) {
-        filtered = filtered.filter(restaurant => 
+        filtered = filtered.filter(restaurant =>
           restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())
         );
       }
 
       if (selectedCity) {
-        filtered = filtered.filter(restaurant => 
+        filtered = filtered.filter(restaurant =>
           restaurant.location.city.toLowerCase() === selectedCity.toLowerCase()
         );
       }
 
       if (selectedTag) {
-        filtered = filtered.filter(restaurant => 
+        filtered = filtered.filter(restaurant =>
           restaurant.tags.includes(selectedTag)
         );
       }
@@ -46,27 +46,26 @@ export const Homepage = () => {
   }, [searchTerm, selectedCity, selectedTag, restaurants]);
 
   return (
-    <>
+    <Layout>
       <div className="flex flex-col items-start justify-center min-h-screen">
-        <Navbar />
         <div className="flex flex-row items-center justify-start w-full max-w-5xl mt-5 ml-20">
           {/* GIF on the left */}
           <img src={logoGif} alt="Logo" className="h-[17.5rem] w-[17.5rem] mr-16 rounded-lg object-cover" />
 
           <div className="flex flex-col items-center w-full max-w-2xl">
             <div className="flex justify-between items-center my-5 p-4 bg-gray-800 rounded-lg w-full">
-              <input 
-                type="text" 
-                placeholder="Search by name..." 
+              <input
+                type="text"
+                placeholder="Search by name..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} 
+                onChange={(e) => setSearchTerm(e.target.value)}
                 list="restaurant-names"
                 className="p-2 mr-3 border border-gray-400 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
               />
               <datalist id="restaurant-names">
                 {/* Generate autocomplete options */}
                 {restaurants
-                  .filter(restaurant => 
+                  .filter(restaurant =>
                     restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())
                   )
                   .map(restaurant => (
@@ -75,7 +74,7 @@ export const Homepage = () => {
                 }
               </datalist>
 
-              <select 
+              <select
                 value={selectedCity}
                 onChange={(e) => setSelectedCity(e.target.value)}
                 className="p-2 mr-3 border border-gray-400 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
@@ -87,7 +86,7 @@ export const Homepage = () => {
                 ))}
               </select>
 
-              <select 
+              <select
                 value={selectedTag}
                 onChange={(e) => setSelectedTag(e.target.value)}
                 className="p-2 border border-gray-400 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
@@ -110,14 +109,14 @@ export const Homepage = () => {
                   </div>
                 ))
               ) : (
-                searchTerm || selectedCity || selectedTag ? 
-                <p className="text-gray-400 text-center">No restaurants found matching your criteria.</p> : 
+                searchTerm || selectedCity || selectedTag ?
+                <p className="text-gray-400 text-center">No restaurants found matching your criteria.</p> :
                 <p className="text-gray-400 text-center">Please use the dropdowns above to search for a restaurant.</p>
               )}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
