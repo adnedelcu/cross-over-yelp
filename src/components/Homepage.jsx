@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
-import mockData from '../assets/mockupData.json';
 import logoGif from '../assets/logo.gif'; // Import the GIF
 import { Layout } from './Layout.jsx';
-
 
 export const Homepage = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -12,8 +10,18 @@ export const Homepage = () => {
   const [selectedTag, setSelectedTag] = useState('');
 
   useEffect(() => {
-    // Load the JSON data
-    setRestaurants(mockData);
+    // Fetch data from the API
+    const fetchRestaurants = async () => {
+      try {
+        const response = await fetch('https://mini-yelp-api.vercel.app/api/restaurants');
+        const data = await response.json();
+        setRestaurants(data);
+      } catch (error) {
+        console.error('Error fetching restaurant data:', error);
+      }
+    };
+
+    fetchRestaurants();
   }, []);
 
   useEffect(() => {
