@@ -65,8 +65,8 @@ export const RestaurantList = () => {
   return (
     <Layout>
       {/* Search and Filter Bar */}
-      <div className="flex flex-col items-center w-full max-w-2xl mt-5">
-        <div className="flex justify-between items-center my-5 p-4 bg-gray-800 rounded-lg w-full">
+      <div className="flex justify-center w-full mt-5">
+        <div className="flex justify-between items-center my-5 p-4 bg-gray-800 rounded-lg w-full max-w-2xl">
           <input 
             type="text" 
             placeholder="Search by name..." 
@@ -110,19 +110,21 @@ export const RestaurantList = () => {
         </div>
       </div>
 
-      {/* Filtered Restaurant List */}
-      <div className="flex flex-row gap-4 flex-wrap">
-        {isLoading ? (
-          <>
-            <RestaurantCardSkeleton />
-            <RestaurantCardSkeleton />
-            <RestaurantCardSkeleton />
-          </>
-        ) : (
-          filteredRestaurants.map(restaurant => (
-            <RestaurantCard key={restaurant.id} restaurant={restaurant} />
-          ))
-        )}
+     {/* Centered Filtered Restaurant List */}
+     <div className="flex justify-center w-full mt-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl">
+          {isLoading ? (
+            <>
+              <RestaurantCardSkeleton />
+              <RestaurantCardSkeleton />
+              <RestaurantCardSkeleton />
+            </>
+          ) : (
+            filteredRestaurants.map(restaurant => (
+              <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+            ))
+          )}
+        </div>
       </div>
     </Layout>
   )
