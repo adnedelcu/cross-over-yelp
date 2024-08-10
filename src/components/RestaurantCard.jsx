@@ -12,6 +12,7 @@ export const RestaurantCard = ({ restaurant }) => {
               {restaurant.location.address}<br />
               {restaurant.location.zip_code} {restaurant.location.city}, {restaurant.location.state}
             </p>}
+            <p className="flex gap-1 mb-2">{restaurant.tags.map(tag => <span className="badge badge-primary">{tag}</span>)}</p>
             <p>
               <span className="rating rating-half">
                 <input type="radio" name={`rating-${restaurant.id}`} disabled className="pointer-events-none mask mask-heart mask-half-1 bg-red-400" defaultChecked={restaurant.rating >= 0 && restaurant.rating <= 0.5} />
