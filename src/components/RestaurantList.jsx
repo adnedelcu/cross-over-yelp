@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Navbar } from './Navbar.jsx'
-import { RestaurantCard } from './RestaurantCard.jsx'
-import { RestaurantCardSkeleton } from './RestaurantCardSkeleton.jsx'
+import { useEffect, useState } from 'react';
+import { Layout } from './Layout.jsx';
+import { RestaurantCard } from './RestaurantCard.jsx';
+import { RestaurantCardSkeleton } from './RestaurantCardSkeleton.jsx';
 
-import { getRestaurants } from '../utils/restaurants.js'
+import { getRestaurants } from '../utils/restaurants.js';
 
 export const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -29,8 +29,7 @@ export const RestaurantList = () => {
   }, []);
 
   return (
-    <>
-      <Navbar></Navbar>
+    <Layout>
       <div className="flex flex-row gap-4 flex-wrap">
         {isLoading ? (
           <>
@@ -42,6 +41,6 @@ export const RestaurantList = () => {
           restaurants.map(restaurant => <RestaurantCard key={restaurant.id} restaurant={restaurant} />)
         )}
       </div>
-    </>
+    </Layout>
   )
 }
