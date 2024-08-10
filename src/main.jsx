@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Homepage } from './components/Homepage.jsx'
 import { RestaurantList } from './components/RestaurantList.jsx'
 import { Restaurant } from './components/Restaurant.jsx'
+import { Login } from './components/Login.jsx'
 import './index.css'
 
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/restaurants/:id",
     element: <Restaurant />
+  },
+  {
+    path: "/login/",
+    element: <Login />
   }
 ]);
 
