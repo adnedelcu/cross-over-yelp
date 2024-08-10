@@ -5,6 +5,7 @@ import { RestaurantList } from './components/RestaurantList.jsx'
 import { Restaurant } from './components/Restaurant.jsx'
 import './index.css'
 
+
 import {
   createBrowserRouter,
   RouterProvider,
