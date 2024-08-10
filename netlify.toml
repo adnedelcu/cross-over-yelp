@@ -4,6 +4,11 @@
   publish = "dist" # create-react-app builds to this folder, Netlify should serve all these files statically
 
 [[redirects]]
+  from = "/*.svg"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
   from = "/"
   to = "/index.html"
   status = 200
