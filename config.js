@@ -1,2 +1,2 @@
-export const API_URL = 'https://cross-over-yelp';
-export const mockData = true;
+export const API_URL = 'https://mini-yelp-api.vercel.app/api';
+export const mockData = false;
