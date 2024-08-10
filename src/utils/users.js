@@ -13,7 +13,6 @@ export const getUsers = () => {
 
 export const getUser = (id) => {
   return new Promise((resolve) => {
-    console.log(users, id);
     resolve(users.find(item => item.id == id));
   })
 
