@@ -11,6 +11,11 @@ import { randomCoordinates } from '../../config.js';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
 
+import leafGreen from '../assets/leaf-green.png';
+import leafShadow from '../assets/leaf-shadow.png';
+
+import L from 'leaflet';
+
 export const Restaurant = () => {
   let { id } = useParams();
   const [restaurant, setRestaurant] = useState({});
@@ -18,6 +23,17 @@ export const Restaurant = () => {
   const [coordinates, setCoordinates] = useState({
     lat: null,
     lng: null,
+  });
+
+  const icon = L.icon({
+    iconUrl: leafGreen,
+    shadowUrl: leafShadow,
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
   });
 
   useEffect(() => {
@@ -64,7 +80,7 @@ export const Restaurant = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               {coordinates.lat && coordinates.lng && (
-                <Marker position={[coordinates.lat, coordinates.lng]}>
+                <Marker icon={icon} position={[coordinates.lat, coordinates.lng]}>
                   <Popup>
                     A pretty CSS3 popup. <br /> Easily customizable.
                   </Popup>
